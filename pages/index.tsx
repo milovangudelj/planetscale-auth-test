@@ -1,8 +1,11 @@
 import type { NextPage } from "next";
+import { useSession } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
 
 const Home: NextPage = () => {
+	const { data: session } = useSession();
+
 	return (
 		<div className="min-h-screen">
 			<Head>
@@ -16,14 +19,18 @@ const Home: NextPage = () => {
 					<span>
 						<Link href={"/"}>PScale Auth</Link>
 					</span>
-					<ul className="flex space-x-4">
-						<li>
-							<Link href={"/signin"}>Sign in</Link>
-						</li>
-						<li>
-							<Link href={"/signup"}>Sign up</Link>
-						</li>
-					</ul>
+					{session ? (
+						<span>{session.user?.email}</span>
+					) : (
+						<ul className="flex space-x-4">
+							<li>
+								<Link href={"/signin"}>Sign in</Link>
+							</li>
+							<li>
+								<Link href={"/signup"}>Sign up</Link>
+							</li>
+						</ul>
+					)}
 				</nav>
 			</div>
 			<main className="w-full px-4">

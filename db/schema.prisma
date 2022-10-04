@@ -23,6 +23,7 @@ model Post {
   authorId  String
 
   @@index(authorId)
+  @@map("posts")
 }
 
 model Account {
@@ -42,6 +43,7 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+  @@map("accounts")
 }
 
 model Session {
@@ -50,17 +52,23 @@ model Session {
   userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
 }
 
 model User {
   id            String    @id @default(cuid())
   name          String?
+  surname          String?
   email         String?   @unique
   emailVerified DateTime?
+  password      String      @db.Text
   image         String?
   accounts      Account[]
   sessions      Session[]
   posts         Post[]
+
+  @@map("users")
 }
 
 model VerificationToken {

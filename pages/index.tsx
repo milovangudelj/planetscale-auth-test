@@ -1,6 +1,9 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 
+import { Login, Logout } from "components";
+import Profile from "components/Profile/Profile";
+
 const Home: NextPage = () => {
 	return (
 		<div>
@@ -14,6 +17,11 @@ const Home: NextPage = () => {
 				<h1>Welcome to Planetscale Auth Test!</h1>
 
 				<p>Fun things to come</p>
+
+				<Login />
+				<Logout />
+
+				<Profile />
 			</main>
 		</div>
 	);

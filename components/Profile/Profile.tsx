@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { useUser } from "@auth0/nextjs-auth0";
 
-export default function Profile() {
+export const Profile = () => {
 	const { user, error, isLoading } = useUser();
 
 	if (isLoading) return <div>Loading...</div>;
@@ -22,4 +22,4 @@ export default function Profile() {
 	) : (
 		<div>No user</div>
 	);
-}
+};

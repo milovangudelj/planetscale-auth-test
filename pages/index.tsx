@@ -1,8 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 
-import { Login, Logout } from "components";
-import Profile from "components/Profile/Profile";
+import { Login, Logout, Profile } from "components";
 
 const Home: NextPage = () => {
 	return (

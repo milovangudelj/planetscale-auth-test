@@ -5,7 +5,11 @@
 		"baseUrl": ".",
 		"paths": {
 			"components": ["components/index.ts"],
-			"components/*": ["components/*"]
+			"components/*": ["components/*"],
+			"lib": ["lib/index.ts"],
+			"lib/*": ["lib/*"],
+			"utils": ["utils/index.ts"],
+			"utils/*": ["utils/*"]
 		},
 		"allowJs": true,
 		"skipLibCheck": true,

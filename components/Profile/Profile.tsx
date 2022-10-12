@@ -1,23 +1,20 @@
 import React from "react";
 import Image from "next/image";
-import { useUser } from "@auth0/nextjs-auth0";
+import { useSession } from "next-auth/react";
 
 export const Profile = () => {
-	const { user, error, isLoading } = useUser();
+	const { data: session } = useSession();
 
-	if (isLoading) return <div>Loading...</div>;
-	if (error) return <div>{error.message}</div>;
-
-	return user ? (
+	return session ? (
 		<div>
 			<Image
-				src={user.picture ?? ""}
-				alt={user.name ?? "User profile image"}
+				src={session.user?.image ?? ""}
+				alt={session.user?.name ?? "User profile image"}
 				width={32}
 				height={32}
 			/>
-			<h2>{user.name}</h2>
-			<p>{user.email}</p>
+			<h2>{session.user?.name}</h2>
+			<p>{session.user?.email}</p>
 		</div>
 	) : (
 		<div>No user</div>
